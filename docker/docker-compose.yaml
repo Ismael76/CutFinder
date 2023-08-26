@@ -13,4 +13,4 @@ services:
     environment:
       - POSTGRES_USER=admin
     volumes:
-      - "./db/migrations:/docker-entrypoint-initdb.d/:ro"
+      - "../migration:/docker-entrypoint-initdb.d/:ro"
