@@ -8,25 +8,23 @@ CREATE TABLE users
     password VARCHAR(500) NOT NULL
 );
 
-DROP TABLE IF EXISTS barbers;
-
-CREATE TABLE barbers
-(
-    barber_id serial PRIMARY KEY,
-    -- isAvailable BOOLEAN NOT NULL,
-    user_id INT REFERENCES users (id),
-    barbershop_id INT REFERENCES barbershops(barbershop_id)
-);
-
 DROP TABLE IF EXISTS barbershops;
 
 CREATE TABLE barbershops
 (
     barbershop_id serial PRIMARY KEY,
     shopname VARCHAR(100) NOT NULL,
-    owner_id INT REFERENCES barbers (barber_id),
     address VARCHAR(100) NOT NULL UNIQUE,
     storenumber VARCHAR(100) NOT NULL UNIQUE
+);
+
+DROP TABLE IF EXISTS barbers;
+
+CREATE TABLE barbers
+(
+    barber_id serial PRIMARY KEY,
+    user_id INT REFERENCES users (id),
+    barbershop_id INT REFERENCES barbershops(barbershop_id)
 );
 
 DROP TABLE IF EXISTS hairstyles;
@@ -45,7 +43,7 @@ CREATE TABLE bookings
     booking_day VARCHAR(100),
     customer_id INT REFERENCES users (id),
     barber_id INT REFERENCES barbers (barber_id),
-    hairstyle INT REFERENCES hairstyles (hairstyle_id)
+    hairstyle_id INT REFERENCES hairstyles (hairstyle_id)
 );
 
 DROP TABLE IF EXISTS barberSkills;
@@ -65,6 +63,6 @@ CREATE TABLE barbershopPrices
     hairstyle_id INT REFERENCES hairstyles(hairstyle_id),
     barbershop_id INT REFERENCES barbershops(barbershop_id),
     Price DECIMAL(10, 2), 
-    PRIMARY KEY (hairstyle, barbershop_id)
+    PRIMARY KEY (hairstyle_id, barbershop_id)
 );
 
