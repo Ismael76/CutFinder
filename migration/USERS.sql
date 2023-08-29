@@ -62,7 +62,7 @@ CREATE TABLE barbershopPrices
 (
     hairstyle_id INT REFERENCES hairstyles(hairstyle_id),
     barbershop_id INT REFERENCES barbershops(barbershop_id),
-    Price DECIMAL(10, 2), 
+    price DECIMAL(10, 2), 
     PRIMARY KEY (hairstyle_id, barbershop_id)
 );
 
