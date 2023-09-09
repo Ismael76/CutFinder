@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watch",
     "coverage": "jest --coverage",
-    "dev": "node src/config/seedDev.js && nodemon --legacy-watch src"
+    "dev": "node src/config/seedDev.js && nodemon --legacy-watch src",
+    "prod": "node src/index.js"
   },
   "repository": {
     "type": "git",
